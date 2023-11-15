@@ -1,0 +1,46 @@
+:root{
+    --header-height:80px;
+    --footer-height:40px;
+    --main-height:calc(100vh - calc(var(--header-height) + var(--footer-height)));
+}
+
+body{
+    margin: 0px;
+    font-family: poppins;
+}
+header{
+    width: 100%;
+    height: var(--header-height);
+    background-color: #342638;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header h1{
+    color: #fff;
+    font-size: 40px;
+    font-weight: 700!important;
+}
+
+main{
+    width: 100%;
+    height: var(--main-height);
+    background-color: #EEEFF2;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer{
+    width: 100%;
+    height: var(--footer-height);
+    background-color: #011825;
+    float: left;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
