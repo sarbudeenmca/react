@@ -1,6 +1,6 @@
 :root {
     --header-height: 80px;
-    --footer-height: 40px;
+    --footer-height: 60px;
     --main-height: calc(100vh - calc(var(--header-height) + var(--footer-height)));
 }
 
@@ -31,10 +31,16 @@ footer {
     height: var(--footer-height);
     background-color: #113C37;
     float: left;
-    color: #E5D9CD;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+}
+
+footer p{
+    margin: 0px;
+    color: #fff;
+    font-size: 14px;
 }
 
 div.box {
@@ -133,4 +139,12 @@ main {
 
 .list li .desc{
     text-align: left;
+}
+
+.list li label{
+    user-select: none;
+}
+
+.list label.strike{
+    text-decoration: line-through;
 }
