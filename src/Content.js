@@ -23,6 +23,7 @@ const Content = ({ items, handleCheckbox, handleRemove, afterHandle }) => {
   return (
     <main>
       <AddItem
+        items={items}
         newItem={newItem}
         setNewItem={setNewItem}
         handleSubmit={handleSubmit}
