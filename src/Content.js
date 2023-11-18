@@ -1,14 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ItemsList from './ItemsList';
+import AddItem from './AddItem';
+import SearchItem from './SearchItem';
 
-const Content = ({ items, handleCheckbox, handleRemove }) => {
+const Content = ({ items, handleCheckbox, handleRemove, afterHandle }) => {
+
+  const [newItem, setNewItem] = useState('');
+  const [search, searchResult] = useState('');
+  const addItem = (newItem) => {
+    const newId = items.length ? Math.max(...items.map(item => item.id)) + 1 : 1
+    const addNewItem = { id: newId, checked: false, desc: newItem }
+    const listItems = [...items, addNewItem]
+    afterHandle(listItems)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addItem(newItem)
+    setNewItem('');
+  }
+
   return (
     <main>
+      <AddItem
+        newItem={newItem}
+        setNewItem={setNewItem}
+        handleSubmit={handleSubmit}
+      />
+      <SearchItem
+        search={search}
+        searchResult={searchResult}
+      />
       <ul className='list'>
         {
           (items.length) ? (
             <ItemsList
-              items={items}
+              items={items.filter(item => (item.desc.toLowerCase()).includes(search.toLowerCase()))}
               handleCheckbox={handleCheckbox}
               handleRemove={handleRemove}
             />
