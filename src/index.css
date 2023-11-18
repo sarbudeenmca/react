@@ -84,6 +84,7 @@ main {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
+    overflow-y: auto;
 }
 
 .list {
@@ -194,4 +195,15 @@ main {
 
 .addForm button:hover{
     background-color: #0a5167;
+}
+
+.colorBox{
+    height: 100px;
+    width: calc(100% - 2px);
+    float: left;
+}
+
+section h2{
+    text-align: center;
+    color: #fff;
 }

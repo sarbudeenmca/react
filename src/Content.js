@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import ItemsList from './ItemsList';
 import AddItem from './AddItem';
 import SearchItem from './SearchItem';
+import Colors from './Colors';
 
 const Content = ({ items, handleCheckbox, handleRemove, afterHandle }) => {
 
@@ -23,6 +24,7 @@ const Content = ({ items, handleCheckbox, handleRemove, afterHandle }) => {
   return (
     <main>
       <AddItem
+        items={items}
         newItem={newItem}
         setNewItem={setNewItem}
         handleSubmit={handleSubmit}
@@ -44,6 +46,7 @@ const Content = ({ items, handleCheckbox, handleRemove, afterHandle }) => {
           )
         }
       </ul >
+      <Colors />
     </main >
   )
 }

@@ -6,7 +6,7 @@ import { useState } from "react";
 function App() {
 
   const savedList = JSON.parse(localStorage.getItem('updatedItems'))
-  const initialList = [] //{ id: 1, desc: "Install New OS", checkbox: true }
+  const initialList = []
   const [items, setItems] = useState(savedList ? savedList : initialList)
 
   const afterHandle = (updatedItems) => {
@@ -33,7 +33,7 @@ function App() {
   return (
     <div>
       <Header
-        myTitle='To do List'
+        myTitle='To do List' myLink='colors'
       />
       <Content
         items={items}
