@@ -4,7 +4,7 @@ import AddItem from './AddItem';
 import SearchItem from './SearchItem';
 import Colors from './Colors';
 
-const Content = ({ items, handleCheckbox, handleRemove, afterHandle }) => {
+const Content = ({ items, handleCheckbox, handleRemove, afterHandle, showSuccessToast }) => {
 
   const [newItem, setNewItem] = useState('');
   const [search, searchResult] = useState('');
@@ -16,10 +16,13 @@ const Content = ({ items, handleCheckbox, handleRemove, afterHandle }) => {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     addItem(newItem)
-    setNewItem('');
+    setNewItem('')
+    showSuccessToast('New Item Added')
   }
+
+  const filteredItems = items.filter(item => item.desc.toLowerCase().includes(search.toLowerCase()));
 
   return (
     <main>
@@ -36,11 +39,15 @@ const Content = ({ items, handleCheckbox, handleRemove, afterHandle }) => {
       <ul className='list'>
         {
           (items.length) ? (
-            <ItemsList
-              items={items.filter(item => (item.desc.toLowerCase()).includes(search.toLowerCase()))}
-              handleCheckbox={handleCheckbox}
-              handleRemove={handleRemove}
-            />
+            (filteredItems.length > 0) ? (
+              <ItemsList
+                items={filteredItems}
+                handleCheckbox={handleCheckbox}
+                handleRemove={handleRemove}
+              />
+            ) : (
+              <li><label>No Result Found!</label></li>
+            )
           ) : (
             <li><label>No list found</label></li>
           )
