@@ -1,19 +1,29 @@
 {
-    "items": [
-        {
-            "id": 1,
-            "checked": false,
-            "desc": "Data 1"
-        },
-        {
-            "id": 2,
-            "checked": true,
-            "desc": "Data 2"
-        },
-        {
-            "id": 3,
-            "checked": true,
-            "desc": "Data 3"
-        }
-    ]
+  "items": [
+    {
+      "id": 1,
+      "checkbox": false,
+      "desc": "Pink"
+    },
+    {
+      "id": 2,
+      "checkbox": true,
+      "desc": "Red"
+    },
+    {
+      "id": 3,
+      "checkbox": true,
+      "desc": "Green"
+    },
+    {
+      "id": 5,
+      "checkbox": true,
+      "desc": "Light Green"
+    },
+    {
+      "id": 6,
+      "checkbox": true,
+      "desc": "Light Blue"
+    }
+  ]
 }

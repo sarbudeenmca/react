@@ -3,15 +3,26 @@ import ItemsList from './ItemsList';
 import AddItem from './AddItem';
 import SearchItem from './SearchItem';
 import Colors from './Colors';
+import apiRequest from './apiRequest';
 
-const Content = ({ items, handleCheckbox, handleRemove, afterHandle, showSuccessToast }) => {
+const Content = ({ items, handleCheckbox, handleRemove, afterHandle, showSuccessToast, showDeleteToast, API_URL }) => {
 
   const [newItem, setNewItem] = useState('');
   const [search, searchResult] = useState('');
-  const addItem = (newItem) => {
+
+  const addItem = async (newItem) => {
     const newId = items.length ? Math.max(...items.map(item => item.id)) + 1 : 1
-    const addNewItem = { id: newId, checked: false, desc: newItem }
+    const addNewItem = { id: newId, checkbox: false, desc: newItem }
     const listItems = [...items, addNewItem]
+    const postOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(addNewItem)
+    }
+    const result = await apiRequest(API_URL, postOptions)
+    if (result) showDeleteToast(result)
     afterHandle(listItems)
   }
 
