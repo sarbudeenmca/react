@@ -11,18 +11,13 @@
       "desc": "Red"
     },
     {
-      "id": 3,
-      "checkbox": true,
-      "desc": "Green"
-    },
-    {
       "id": 5,
-      "checkbox": true,
+      "checkbox": false,
       "desc": "Light Green"
     },
     {
       "id": 6,
-      "checkbox": true,
+      "checkbox": false,
       "desc": "Light Blue"
     }
   ]
