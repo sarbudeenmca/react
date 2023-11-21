@@ -25,7 +25,6 @@ const Content = ({ items, handleCheckbox, handleRemove, afterHandle, showSuccess
     const dbName = 'todos'
     const getURL = `${PH_URL}/${dbName}?_limit=${limit}`
     const response = await apiPlaceholderData(getURL, phOptions)
-    console.log("response", response)
     setPhDatas(response )
   }
 
