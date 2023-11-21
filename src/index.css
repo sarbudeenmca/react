@@ -207,3 +207,16 @@ section h2{
     text-align: center;
     color: #fff;
 }
+
+button.btn1{
+    height: 40px;
+    border: none;
+    background-color: #364057;
+    width: 33.3%;
+    color: #fff;
+    cursor: pointer;
+}
+
+button.btn1:hover{
+    background-color: #5E6678;
+}

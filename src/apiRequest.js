@@ -3,7 +3,7 @@ const apiRequest = async (url = '', optionsObj = null, errorMsg = null) => {
         const response = await fetch(url, optionsObj)
         if (!response.ok) throw Error('Please reload the page')
     } catch (error) {
-        errorMsg = error.Message
+        errorMsg = error.message
     } finally {
         return errorMsg
     }

@@ -1,14 +1,61 @@
 import React, { useState } from 'react'
-import ItemsList from './ItemsList';
-import AddItem from './AddItem';
-import SearchItem from './SearchItem';
-import Colors from './Colors';
-import apiRequest from './apiRequest';
+import ItemsList from './ItemsList'
+import AddItem from './AddItem'
+import SearchItem from './SearchItem'
+import Colors from './Colors'
+import apiRequest from './apiRequest'
+import Buttons from './Buttons'
+import apiPlaceholderData from './apiPlaceholderData'
 
 const Content = ({ items, handleCheckbox, handleRemove, afterHandle, showSuccessToast, showDeleteToast, API_URL }) => {
 
-  const [newItem, setNewItem] = useState('');
-  const [search, searchResult] = useState('');
+  const PH_URL = 'https://jsonplaceholder.typicode.com'
+  const [newItem, setNewItem] = useState('')
+  const [search, searchResult] = useState('')
+  const [phDatas, setPhDatas] = useState([])
+
+  const handleTodos = async () => {
+    const phOptions = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    const limit = 10
+    const dbName = 'todos'
+    const getURL = `${PH_URL}/${dbName}?_limit=${limit}`
+    const response = await apiPlaceholderData(getURL, phOptions)
+    console.log("response", response)
+    setPhDatas(response )
+  }
+
+  const handlePosts = async () => {
+    const phOptions = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    const limit = 10
+    const dbName = 'posts'
+    const getURL = `${PH_URL}/${dbName}?_limit=${limit}`
+    const response = await apiPlaceholderData(getURL, phOptions)
+    setPhDatas(response)
+  }
+
+  const handlePhotos = async () => {
+    const phOptions = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    const limit = 10
+    const dbName = 'photos'
+    const getURL = `${PH_URL}/${dbName}?_limit=${limit}`
+    const response = await apiPlaceholderData(getURL, phOptions)
+    setPhDatas(response)
+  }
 
   const addItem = async (newItem) => {
     const newId = items.length ? Math.max(...items.map(item => item.id)) + 1 : 1
@@ -65,6 +112,12 @@ const Content = ({ items, handleCheckbox, handleRemove, afterHandle, showSuccess
         }
       </ul >
       <Colors />
+      <Buttons
+        phDatas={phDatas}
+        handleTodos={handleTodos}
+        handlePosts={handlePosts}
+        handlePhotos={handlePhotos}
+      />
     </main >
   )
 }
